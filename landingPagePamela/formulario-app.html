@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Pamela Franco</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="form-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Carregando...</p>
+    </div>
+    
+    <!-- Vídeo de fundo -->
+    <video autoplay muted loop playsinline class="background-video video-1 active">
+        <source src="videocompleto.mp4" type="video/mp4">
+    </video>
+    
+    <div class="form-container">
+        <div class="form-card">
+            <!-- Logo -->
+            <div class="logo-container">
+                <img src="imagemdeperfil.jpeg" alt="Pamela Franco - Educadora Física" class="logo">
+            </div>
+            
+            <h1 class="form-title">Faça Parte do Meu Time</h1>
+            <p class="form-subtitle">Preencha seus dados para começarmos sua jornada de transformação!</p>
+            
+            <form id="appForm" class="training-form">
+                <!-- Nome -->
+                <div class="form-group">
+                    <label for="name">Nome Completo *</label>
+                    <input type="text" id="name" name="name" required placeholder="Digite seu nome completo">
+                </div>
+                
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
+                </div>
+                
+                <!-- Telefone -->
+                <div class="form-group">
+                    <label for="phone">Telefone *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="(00) 00000-0000">
+                </div>
+                
+                <!-- Data de Nascimento -->
+                <div class="form-group">
+                    <label for="birthdate">Data de Nascimento *</label>
+                    <input type="date" id="birthdate" name="birthdate" required>
+                </div>
+                
+                <button type="submit" class="submit-button">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Quero fazer parte do time!</span>
+                </button>
+                
+                <a href="aplicativo.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </a>
+            </form>
+        </div>
+    </div>
+    
+    <script>        // Esconde loading screen quando tudo estiver carregado
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 500);
+        });
+        
+        // Fallback: garante que loading desapareça após 0.5 segundo
+        setTimeout(() => {
+            document.getElementById('loadingScreen').classList.add('hidden');
+        }, 500);
+                // Adiciona animação suave ao carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            const card = document.querySelector('.form-card');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
+        });
+        
+        // Transição suave entre os 6 vídeos de fundo
+        const videos = [
+            document.querySelector('.video-1'),
+            document.querySelector('.video-2'),
+            document.querySelector('.video-3'),
+            document.querySelector('.video-4'),
+            document.querySelector('.video-5'),
+            document.querySelector('.video-6')
+        ];
+        
+        let currentVideoIndex = 0;
+        
+        setInterval(() => {
+            // Remove active do vídeo atual
+            videos[currentVideoIndex].classList.remove('active');
+            
+            // Avança para o próximo vídeo
+            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+            
+            // Adiciona active ao próximo vídeo
+            videos[currentVideoIndex].classList.add('active');
+        }, 6000); // Troca a cada 6 segundos
+        
+        // Máscara de telefone
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+                value = value.replace(/(\d)(\d{4})$/, '$1-$2');
+            }
+            e.target.value = value;
+        });
+        
+        // Manipulação do formulário
+        document.getElementById('appForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Previne múltiplos cliques
+            const submitButton = this.querySelector('.submit-button');
+            if (submitButton.disabled) return;
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Enviando...</span>';
+            
+            // Captura os dados do formulário
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                birthdate: document.getElementById('birthdate').value
+            };
+            
+            // Salva no localStorage
+            localStorage.setItem('appFormData', JSON.stringify(formData));
+            
+            // Formata a data para formato brasileiro
+            const birthDate = new Date(formData.birthdate + 'T00:00:00');
+            const formattedDate = birthDate.toLocaleDateString('pt-BR');
+            
+            // Monta mensagem para WhatsApp
+            const whatsappMessage = `*Novo Cadastro - Aplicativo!*%0A%0A` +
+                `*Nome:* ${formData.name}%0A` +
+                `*E-mail:* ${formData.email}%0A` +
+                `*Telefone:* ${formData.phone}%0A` +
+                `*Data de Nascimento:* ${formattedDate}`;
+            
+            // Prepara dados do e-mail
+            const formData2 = new FormData();
+            formData2.append('_subject', 'Novo Cadastro - Aplicativo Pamela Franco');
+            formData2.append('_template', 'table');
+            formData2.append('_captcha', 'false');
+            formData2.append('Nome', formData.name);
+            formData2.append('E-mail', formData.email);
+            formData2.append('Telefone', formData.phone);
+            formData2.append('Data de Nascimento', formattedDate);
+            
+            // Abre WhatsApp PRIMEIRO
+            const whatsappURL = `https://wa.me/5544997102688?text=${whatsappMessage}`;
+            window.open(whatsappURL, '_blank');
+            
+            // Envia e-mail via FormSubmit
+            fetch('https://formsubmit.co/rafael_cbillo@outlook.com', {
+                method: 'POST',
+                body: formData2,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(() => {
+                // Redireciona para página de confirmação
+                window.location.href = 'confirmacao-app.html';
+            }).catch(() => {
+                // Mesmo se der erro, redireciona
+                window.location.href = 'confirmacao-app.html';
+            });
+        });
+    </script>
+</body>
+</html>

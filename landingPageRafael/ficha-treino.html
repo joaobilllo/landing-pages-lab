@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Treino Personalizada - Personal Training</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="form-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Vídeos de fundo com transição -->
+    <video autoplay muted loop playsinline class="background-video video-1 active">
+        <source src="WhatsApp Video 2026-01-19 at 13.47.49.mp4" type="video/mp4">
+    </video>
+    <video autoplay muted loop playsinline class="background-video video-2">
+        <source src="WhatsApp Video 2026-01-19 at 13.47.43.mp4" type="video/mp4">
+    </video>
+    
+    <div class="info-container">
+        <div class="info-card">
+            <!-- Logo -->
+            <div class="logo-container">
+                <img src="ImagemDePerfil.jpeg" alt="Personal Trainer" class="logo">
+            </div>
+            
+            <h1 class="info-title">Ficha de Treino Personalizada</h1>
+            
+            <div class="info-content">
+                <p class="intro-text">Cada pessoa é diferente, e o seu treino precisa ser diferente também.</p>
+                
+                <p>Pra eu montar uma ficha de treino realmente do seu jeito, preciso entender algumas coisas: quais são seus objetivos, como é sua rotina, seu nível atual e o que você espera conquistar nos próximos meses.</p>
+                
+                <p>Por isso, esse atendimento é direto comigo no WhatsApp. A gente conversa, eu te faço algumas perguntas importantes e, a partir disso, monto um treino totalmente personalizado pra você.</p>
+                
+                <div class="benefits-section">
+                    <h3>Esse acompanhamento inclui:</h3>
+                    <ul class="benefits-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Treinos personalizados para os 3 primeiros meses</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Atualização mensal dos treinos, pra evoluir junto com você</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Avaliação mensal, pra ajustar o que for preciso e acelerar seus resultados</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <p class="conclusion-text">A ideia é simples: fazer um treino que encaixe na sua vida, respeite seus limites e te ajude a chegar onde você quer, sem complicação.</p>
+            </div>
+            
+            <div class="cta-section">
+                <a href="https://wa.me/554497460157?text=Olá%20Rafa!%20Gostaria%20de%20montar%20minha%20ficha%20de%20treino%20personalizada.%20Podemos%20conversar?" class="whatsapp-button primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Falar comigo agora no WhatsApp</span>
+                </a>
+            </div>
+            
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Transição suave entre os vídeos de fundo
+        const video1 = document.querySelector('.video-1');
+        const video2 = document.querySelector('.video-2');
+        let currentVideo = 1;
+        
+        setInterval(() => {
+            if (currentVideo === 1) {
+                video2.classList.add('active');
+                setTimeout(() => {
+                    video1.classList.remove('active');
+                }, 800);
+                currentVideo = 2;
+            } else {
+                video1.classList.add('active');
+                setTimeout(() => {
+                    video2.classList.remove('active');
+                }, 800);
+                currentVideo = 1;
+            }
+        }, 6000);
+    </script>
+</body>
+</html>

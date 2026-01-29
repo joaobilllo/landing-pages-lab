@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação - Pamela Franco</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="form-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Carregando...</p>
+    </div>
+    
+    <!-- Vídeo de fundo -->
+    <video autoplay muted loop playsinline class="background-video video-1 active">
+        <source src="videocompleto.mp4" type="video/mp4">
+    </video>
+    
+    <div class="confirmation-container">
+        <div class="confirmation-card">
+            <!-- Logo -->
+            <div class="logo-container">
+                <img src="imagemdeperfil.jpeg" alt="Pamela Franco - Educadora Física" class="logo">
+            </div>
+            
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            
+            <h1 class="confirmation-title">Bem-vindo(a) ao Time!</h1>
+            
+            <div class="confirmation-message">
+                <p><strong>Seu cadastro foi recebido com sucesso!</strong></p>
+                <p>Estou muito feliz em ter você fazendo parte do meu time! 💪</p>
+                <p>Em breve entrarei em contato para conversarmos sobre o aplicativo e como podemos começar sua transformação.</p>
+                <p>Vamos juntos nessa jornada!</p>
+            </div>
+            
+            <div class="trial-section">
+                <h3>Enquanto isso, vamos conversar?</h3>
+                <p>Se quiser adiantar nossa conversa ou tirar alguma dúvida, me chame no WhatsApp!</p>
+                
+                <div class="cta-section">
+                    <a href="https://wa.me/5544997102688?text=Olá%20Pamela!%20Acabei%20de%20me%20cadastrar%20no%20aplicativo%20e%20quero%20saber%20mais!" class="whatsapp-button primary" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>Falar no WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+            
+            <a href="index.html" class="back-link">
+                <i class="fas fa-home"></i> Voltar ao Início
+            </a>
+        </div>
+    </div>
+    
+    <script>        // Esconde loading screen quando tudo estiver carregado
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 500);
+        });
+        
+        // Fallback: garante que loading desapareça após 0.5 segundo
+        setTimeout(() => {
+            document.getElementById('loadingScreen').classList.add('hidden');
+        }, 500);
+                // Adiciona animação suave ao carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            const card = document.querySelector('.confirmation-card');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
+        });
+        
+        // Transição suave entre os 6 vídeos de fundo
+        const videos = [
+            document.querySelector('.video-1'),
+            document.querySelector('.video-2'),
+            document.querySelector('.video-3'),
+            document.querySelector('.video-4'),
+            document.querySelector('.video-5'),
+            document.querySelector('.video-6')
+        ];
+        
+        let currentVideoIndex = 0;
+        
+        setInterval(() => {
+            // Remove active do vídeo atual
+            videos[currentVideoIndex].classList.remove('active');
+            
+            // Avança para o próximo vídeo
+            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+            
+            // Adiciona active ao próximo vídeo
+            videos[currentVideoIndex].classList.add('active');
+        }, 6000); // Troca a cada 6 segundos
+    </script>
+</body>
+</html>

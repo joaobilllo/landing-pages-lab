@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultoria Online - Pamela Franco</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="form-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Carregando...</p>
+    </div>
+    
+    <!-- Vídeo de fundo -->
+    <video autoplay muted loop playsinline class="background-video video-1 active">
+        <source src="videocompleto.mp4" type="video/mp4">
+    </video>
+    
+    <div class="info-container">
+        <div class="info-card">
+            <!-- Logo -->
+            <div class="logo-container">
+                <img src="imagemdeperfil.jpeg" alt="Pamela Franco - Educadora Física" class="logo">
+            </div>
+            
+            <h1 class="info-title">Consultoria Online</h1>
+            
+            <div class="info-content">
+                <div class="intro-section">
+                    <p class="intro-text">Treinar online não significa treinar sozinha!</p>
+                    
+                    <p>Minha consultoria online foi criada para você que busca resultados reais, com acompanhamento personalizado, sem sair de casa.</p>
+                    
+                    <p>Eu entendo que cada pessoa tem uma rotina diferente, objetivos únicos e necessidades específicas. Por isso, minha metodologia é totalmente adaptada para você, respeitando seu tempo, seu corpo e seus limites.</p>
+                </div>
+                
+                <div class="benefits-section">
+                    <h3>O que está incluído:</h3>
+                    <ul class="benefits-list">
+                        <li>
+                            <i class="fas fa-heart"></i>
+                            <span><strong>Treino 100% personalizado</strong> - Elaborado especialmente para o seu objetivo e nível de condicionamento</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-heart"></i>
+                            <span><strong>Acompanhamento mensal</strong> - Ajustes e evolução do treino mês a mês</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-heart"></i>
+                            <span><strong>Suporte direto comigo</strong> - Tire suas dúvidas e receba orientações sempre que precisar</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-heart"></i>
+                            <span><strong>Avaliações periódicas</strong> - Para garantir que você está no caminho certo</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-heart"></i>
+                            <span><strong>Flexibilidade total</strong> - Treine no horário que melhor se encaixa na sua rotina</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                </div>
+            
+            <div class="cta-section">
+                <a href="https://wa.me/5544997102688?text=Olá%20Pamela!%20Tenho%20interesse%20na%20consultoria%20online.%20Podemos%20conversar%20sobre%20como%20funciona?" class="whatsapp-button primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Quero começar minha consultoria</span>
+                </a>
+            </div>
+            
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Esconde loading screen quando tudo estiver carregado
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 500);
+        });
+        
+        // Fallback: garante que loading desapareça após 0.5 segundo
+        setTimeout(() => {
+            document.getElementById('loadingScreen').classList.add('hidden');
+        }, 500);
+        
+        // Adiciona animação suave ao carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            const card = document.querySelector('.info-card');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0;
+    filter: brightness(0.8) contrast(1.1);
+    transition: opacity 0.8s ease-in-out;
+}
+
+.background-video.active {
+    opacity: 0.7;
+}
+
+.container {
+    width: 100%;
+    max-width: 350px;
+    padding: 15px;
+    z-index: 1;
+    margin: 0 auto;
+    background: transparent;
+}
+
+.content-card {
+    background: transparent;
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    padding: 45px 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.content-card:hover {
+    transform: translateY(-5px);
+}
+
+.logo-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid white;
+    box-shadow: 0 8px 25px rgba(0, 200, 83, 0.3);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+.company-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+}
+
+.company-subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 30px;
+    font-weight: 300;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Poppins', sans-serif;
+}
+
+.cta-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.cta-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 28px;
+    color: white;
+    text-decoration: none;
+    border-radius: 100px;
+    border: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    position: relative;
+}
+
+.simulation-button {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+}
+
+.simulation-button:hover {
+    background: linear-gradient(135deg, #ee5a6f 0%, #ff6b6b 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 107, 107, 0.6);
+}
+
+.workout-button {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    box-shadow: 0 8px 25px rgba(79, 172, 254, 0.5);
+}
+
+.workout-button:hover {
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(79, 172, 254, 0.6);
+}
+
+.cta-button i {
+    font-size: 1.3rem;
+    position: absolute;
+    left: 24px;
+}
+
+.cta-button span {
+    flex: 1;
+}
+
+.whatsapp-button {
+    background: linear-gradient(135deg, #25d366 0%, #1ebea5 100%);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-button:hover {
+    background: linear-gradient(135deg, #128c7e 0%, #25d366 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-button i {
+    font-size: 1.3rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Mobile First - até 480px */
+@media (max-width: 320px) {
+    .container {
+        max-width: 300px;
+        padding: 10px;
+    }
+    
+    .content-card {
+        padding: 25px 15px;
+        border-radius: 15px;
+    }
+    
+    .company-name {
+        font-size: 1.6rem;
+    }
+    
+    .company-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .logo-container {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+/* Tablets pequenos - 481px a 768px */
+@media (min-width: 481px) {
+    .container {
+        max-width: 400px;
+        padding: 20px;
+    }
+    
+    .content-card {
+        padding: 50px 25px;
+    }
+    
+    .company-name {
+        font-size: 2rem;
+    }
+    
+    .company-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+    
+    .cta-section {
+        gap: 18px;
+    }
+    
+    .logo-container {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 25px;
+    }
+}
+
+/* Tablets e Desktop - 769px+ */
+@media (min-width: 769px) {
+    .container {
+        max-width: 450px;
+    }
+    
+    .content-card {
+        padding: 55px 35px;
+    }
+    
+    .company-name {
+        font-size: 2.2rem;
+    }
+    
+    .logo-container {
+        width: 140px;
+        height: 140px;
+    }
+}

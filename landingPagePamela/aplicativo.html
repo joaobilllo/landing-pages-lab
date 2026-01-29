@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conheça Meu Aplicativo - Pamela Franco</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="form-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Carregando...</p>
+    </div>
+    
+    <!-- Vídeo de fundo -->
+    <video autoplay muted loop playsinline class="background-video video-1 active">
+        <source src="videocompleto.mp4" type="video/mp4">
+    </video>
+    
+    <div class="info-container">
+        <div class="info-card">
+            <!-- Logo -->
+            <div class="logo-container">
+                <img src="imagemdeperfil.jpeg" alt="Pamela Franco - Educadora Física" class="logo">
+            </div>
+            
+            <h1 class="info-title">Conheça Meu Aplicativo</h1>
+            
+            <div class="info-content">
+                <div class="intro-section">
+                    <p class="intro-text">Treinar comigo agora ficou ainda mais fácil!</p>
+                    
+                    <p>Meu aplicativo foi desenvolvido para você que busca praticidade, flexibilidade e resultados reais, tudo na palma da sua mão.</p>
+                    
+                    <p>Com ele, você tem acesso a treinos personalizados, pode acompanhar sua evolução, receber orientações exclusivas e manter o foco nos seus objetivos, onde quer que esteja.</p>
+                    
+                    <p>O melhor de tudo? Você treina no seu ritmo, sem depender de horários fixos, mas com todo o suporte e acompanhamento que precisa para conquistar seus resultados.</p>
+                </div>
+                
+            </div>
+            
+            <div class="cta-section">
+                <a href="formulario-app.html" class="cta-button app-button">
+                    <i class="fas fa-users"></i>
+                    <span>Faça parte do meu time</span>
+                </a>
+            </div>
+            
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Esconde loading screen quando tudo estiver carregado
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 500);
+        });
+        
+        // Fallback: garante que loading desapareça após 0.5 segundo
+        setTimeout(() => {
+            document.getElementById('loadingScreen').classList.add('hidden');
+        }, 500);
+        
+        // Adiciona animação suave ao carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            const card = document.querySelector('.info-card');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

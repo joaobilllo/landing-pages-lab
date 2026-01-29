@@ -1,0 +1,322 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    height: 100vh;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 133, 192, 0.4) 0%, rgba(255, 95, 162, 0.4) 100%);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-text {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 20px;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0;
+    filter: none;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.background-video.active {
+    opacity: 1;
+}
+
+.container {
+    width: 100%;
+    max-width: 350px;
+    padding: 15px;
+    z-index: 1;
+    margin: 0 auto;
+    background: transparent;
+}
+
+/* Card transparente - v2.0 */
+.content-card {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 30px;
+    padding: 45px 20px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(144, 238, 144, 0.2), 
+                0 5px 15px rgba(255, 105, 180, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(255, 105, 180, 0.4), 
+                0 8px 20px rgba(144, 238, 144, 0.25);
+}
+
+.logo-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 25px rgba(255, 95, 162, 0.6), 0 4px 15px rgba(0, 0, 0, 0.4);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+.company-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 0, 0, 0.4);
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 2px;
+}
+
+.company-subtitle {
+    font-size: 1.1rem;
+    color: #90ee90;
+    margin-bottom: 8px;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(144, 238, 144, 0.4);
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: 0.8px;
+}
+
+.company-tagline {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 30px;
+    font-weight: 500;
+    font-style: italic;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.cta-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.cta-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 28px;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    border: none;
+    transition: all 0.4s ease;
+    font-weight: 500;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    position: relative;
+    letter-spacing: 0.5px;
+}
+
+.app-button {
+    background: linear-gradient(to right, rgba(255, 133, 192, 0.65) 0%, rgba(255, 95, 162, 0.65) 100%);
+    box-shadow: 0 8px 25px rgba(255, 95, 162, 0.25);
+    border: 2px solid rgba(255, 133, 192, 0.45);
+}
+
+.app-button:hover {
+    background: linear-gradient(to right, rgba(255, 182, 217, 0.75) 0%, rgba(255, 133, 192, 0.75) 100%);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(255, 95, 162, 0.35);
+}
+
+.consultoria-button {
+    background: linear-gradient(to left, rgba(255, 133, 192, 0.65) 0%, rgba(255, 95, 162, 0.65) 100%);
+    box-shadow: 0 8px 25px rgba(255, 95, 162, 0.25);
+    border: 2px solid rgba(255, 133, 192, 0.45);
+}
+
+.consultoria-button:hover {
+    background: linear-gradient(to left, rgba(255, 182, 217, 0.75) 0%, rgba(255, 133, 192, 0.75) 100%);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(255, 95, 162, 0.35);
+}
+
+.cta-button i {
+    font-size: 1.3rem;
+}
+
+.whatsapp-button {
+    background: linear-gradient(to right, rgba(255, 133, 192, 0.65) 0%, rgba(255, 95, 162, 0.65) 100%);
+    box-shadow: 0 8px 25px rgba(255, 95, 162, 0.25);
+    border: 2px solid rgba(255, 133, 192, 0.45);
+}
+
+.whatsapp-button:hover {
+    background: linear-gradient(to right, rgba(255, 182, 217, 0.75) 0%, rgba(255, 133, 192, 0.75) 100%);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(255, 95, 162, 0.35);
+}
+
+.whatsapp-button i {
+    font-size: 1.4rem;
+    animation: pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/* Mobile First - até 480px */
+@media (max-width: 320px) {
+    .container {
+        max-width: 300px;
+        padding: 10px;
+    }
+    
+    .content-card {
+        padding: 25px 15px;
+        border-radius: 15px;
+    }
+    
+    .company-name {
+        font-size: 1.6rem;
+    }
+    
+    .company-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .logo-container {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+/* Tablets pequenos - 481px a 768px */
+@media (min-width: 481px) {
+    .container {
+        max-width: 400px;
+        padding: 20px;
+    }
+    
+    .content-card {
+        padding: 50px 25px;
+    }
+    
+    .company-name {
+        font-size: 2rem;
+    }
+    
+    .company-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+    
+    .cta-section {
+        gap: 18px;
+    }
+    
+    .logo-container {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 25px;
+    }
+}
+
+/* Tablets e Desktop - 769px+ */
+@media (min-width: 769px) {
+    .container {
+        max-width: 450px;
+    }
+    
+    .content-card {
+        padding: 55px 35px;
+    }
+    
+    .company-name {
+        font-size: 2.2rem;
+    }
+    
+    .logo-container {
+        width: 140px;
+        height: 140px;
+    }
+}

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulação de Treinos - Personal Training</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="form-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Vídeos de fundo com transição -->
+    <video autoplay muted loop playsinline class="background-video video-1 active">
+        <source src="WhatsApp Video 2026-01-19 at 13.47.49.mp4" type="video/mp4">
+    </video>
+    <video autoplay muted loop playsinline class="background-video video-2">
+        <source src="WhatsApp Video 2026-01-19 at 13.47.43.mp4" type="video/mp4">
+    </video>
+    
+    <div class="form-container">
+        <div class="form-card">
+            <!-- Logo -->
+            <div class="logo-container">
+                <img src="ImagemDePerfil.jpeg" alt="Personal Trainer" class="logo">
+            </div>
+            
+            <h1 class="form-title">Simulação de Treinos</h1>
+            <p class="form-subtitle">Preencha os dados para montarmos seu treino personalizado</p>
+            
+            <form id="simulationForm" class="training-form">
+                <!-- Nome -->
+                <div class="form-group">
+                    <label for="name">Nome Completo *</label>
+                    <input type="text" id="name" name="name" required placeholder="Digite seu nome">
+                </div>
+                
+                <!-- Sexo -->
+                <div class="form-group">
+                    <label for="gender">Sexo *</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Selecione</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+                
+                <!-- Idade -->
+                <div class="form-group">
+                    <label for="age">Faixa Etária *</label>
+                    <select id="age" name="age" required>
+                        <option value="">Selecione sua idade</option>
+                        <option value="ate20">Até 20 anos</option>
+                        <option value="21-30">21 a 30 anos</option>
+                        <option value="31-45">31 a 45 anos</option>
+                        <option value="acima45">Acima de 45 anos</option>
+                    </select>
+                </div>
+                
+                <!-- Objetivo -->
+                <div class="form-group">
+                    <label for="goal">Objetivo *</label>
+                    <select id="goal" name="goal" required>
+                        <option value="">Selecione seu objetivo</option>
+                        <option value="emagrecer">Quero emagrecer</option>
+                        <option value="definir">Quero definir meu corpo</option>
+                        <option value="estilo-vida">Quero mudar meu estilo de vida</option>
+                    </select>
+                </div>
+                
+                <!-- Frequência -->
+                <div class="form-group">
+                    <label for="frequency">Quantas vezes por semana você quer treinar comigo? *</label>
+                    <select id="frequency" name="frequency" required>
+                        <option value="">Selecione a frequência</option>
+                        <option value="2x">2x por semana</option>
+                        <option value="3x">3x por semana</option>
+                        <option value="4x">4x por semana</option>
+                        <option value="5x">5x por semana</option>
+                    </select>
+                    <div id="priceDisplay" class="price-display" style="display: none;">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span id="priceText"></span>
+                    </div>
+                </div>
+                
+                <!-- Período -->
+                <div class="form-group">
+                    <label for="period">Qual período você prefere treinar? *</label>
+                    <select id="period" name="period" required>
+                        <option value="">Selecione o período</option>
+                        <option value="pre-manha">Pré manhã – antes das 08h</option>
+                        <option value="manha">Durante a manhã – das 08h às 12h</option>
+                        <option value="tarde">Tarde – das 13h às 18h</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-button">
+                    <i class="fas fa-paper-plane"></i>
+                    Enviar Simulação
+                </button>
+                
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </a>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Mostra preço quando seleciona frequência
+        document.getElementById('frequency').addEventListener('change', function() {
+            const priceDisplay = document.getElementById('priceDisplay');
+            const priceText = document.getElementById('priceText');
+            const prices = {
+                '2x': 'R$ 250,00',
+                '3x': 'R$ 350,00',
+                '4x': 'R$ 450,00',
+                '5x': 'R$ 550,00'
+            };
+            
+            if (this.value && prices[this.value]) {
+                priceText.textContent = prices[this.value];
+                priceDisplay.style.display = 'flex';
+            } else {
+                priceDisplay.style.display = 'none';
+            }
+        });
+        
+        // Transição suave entre os vídeos de fundo
+        const video1 = document.querySelector('.video-1');
+        const video2 = document.querySelector('.video-2');
+        let currentVideo = 1;
+        
+        setInterval(() => {
+            if (currentVideo === 1) {
+                video2.classList.add('active');
+                setTimeout(() => {
+                    video1.classList.remove('active');
+                }, 800);
+                currentVideo = 2;
+            } else {
+                video1.classList.add('active');
+                setTimeout(() => {
+                    video2.classList.remove('active');
+                }, 800);
+                currentVideo = 1;
+            }
+        }, 6000);
+        
+        // Manipulação do formulário
+        document.getElementById('simulationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Previne múltiplos cliques
+            const submitButton = this.querySelector('.submit-button');
+            if (submitButton.disabled) return;
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Enviando...</span>';
+            
+            // Captura os dados do formulário
+            const formData = {
+                name: document.getElementById('name').value,
+                gender: document.getElementById('gender').value,
+                age: document.getElementById('age').value,
+                goal: document.getElementById('goal').value,
+                frequency: document.getElementById('frequency').value,
+                period: document.getElementById('period').value
+            };
+            
+            // Salva no localStorage
+            localStorage.setItem('simulationData', JSON.stringify(formData));
+            
+            // Mapeia os valores para texto legível
+            const genderText = {
+                'masculino': 'Masculino',
+                'feminino': 'Feminino',
+                'outro': 'Outro'
+            };
+            
+            const ageText = {
+                'ate20': 'Até 20 anos',
+                '21-30': '21 a 30 anos',
+                '31-45': '31 a 45 anos',
+                'acima45': 'Acima de 45 anos'
+            };
+            
+            const goalText = {
+                'emagrecer': 'Quero emagrecer',
+                'definir': 'Quero definir meu corpo',
+                'estilo-vida': 'Quero mudar meu estilo de vida'
+            };
+            
+            const frequencyText = {
+                '2x': '2x por semana',
+                '3x': '3x por semana',
+                '4x': '4x por semana',
+                '5x': '5x por semana'
+            };
+            
+            const periodText = {
+                'pre-manha': 'Pré manhã – antes das 08h',
+                'manha': 'Durante a manhã – das 08h às 12h',
+                'tarde': 'Tarde – das 13h às 18h'
+            };
+            
+            // Monta mensagem para WhatsApp
+            const whatsappMessage = `*Nova Simulação de Treino Recebida!*%0A%0A` +
+                `*Nome:* ${formData.name}%0A` +
+                `*Sexo:* ${genderText[formData.gender]}%0A` +
+                `*Idade:* ${ageText[formData.age]}%0A` +
+                `*Objetivo:* ${goalText[formData.goal]}%0A` +
+                `*Frequência:* ${frequencyText[formData.frequency]}%0A` +
+                `*Período:* ${periodText[formData.period]}`;
+            
+            // Prepara dados do e-mail em formato legível
+            const emailData = {
+                'Nome': formData.name,
+                'Sexo': genderText[formData.gender],
+                'Idade': ageText[formData.age],
+                'Objetivo': goalText[formData.goal],
+                'Frequência': frequencyText[formData.frequency],
+                'Período': periodText[formData.period]
+            };
+            
+            // Abre WhatsApp PRIMEIRO (antes de enviar o formulário)
+            const whatsappURL = `https://wa.me/554497460157?text=${whatsappMessage}`;
+            window.open(whatsappURL, '_blank');
+            
+            // Envia e-mail via FormSubmit usando fetch
+            const formData2 = new FormData();
+            formData2.append('_subject', 'Nova Simulação de Treino - Personal Training');
+            formData2.append('_template', 'table');
+            formData2.append('_captcha', 'false');
+            formData2.append('Nome', emailData.Nome);
+            formData2.append('Sexo', emailData.Sexo);
+            formData2.append('Idade', emailData.Idade);
+            formData2.append('Objetivo', emailData.Objetivo);
+            formData2.append('Frequência', emailData.Frequência);
+            formData2.append('Período', emailData.Período);
+            
+            // Envia assincronamente
+            fetch('https://formsubmit.co/rafael_cbillo@outlook.com', {
+                method: 'POST',
+                body: formData2,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(() => {
+                // Redireciona para página de confirmação
+                window.location.href = 'confirmacao.html';
+            }).catch(() => {
+                // Mesmo se der erro, redireciona para confirmação
+                window.location.href = 'confirmacao.html';
+            });
+        });
+    </script>
+</body>
+</html>

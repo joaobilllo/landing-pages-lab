@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação - Personal Training</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="form-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Vídeos de fundo com transição -->
+    <video autoplay muted loop playsinline class="background-video video-1 active">
+        <source src="WhatsApp Video 2026-01-19 at 13.47.49.mp4" type="video/mp4">
+    </video>
+    <video autoplay muted loop playsinline class="background-video video-2">
+        <source src="WhatsApp Video 2026-01-19 at 13.47.43.mp4" type="video/mp4">
+    </video>
+    
+    <div class="confirmation-container">
+        <div class="confirmation-card">
+            <!-- Logo -->
+            <div class="logo-container">
+                <img src="ImagemDePerfil.jpeg" alt="Personal Trainer" class="logo">
+            </div>
+            
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            
+            <h1 class="confirmation-title">Muito Obrigado!</h1>
+            
+            <div class="confirmation-message">
+                <p><strong>Sua simulação foi recebida com sucesso!</strong></p>
+                <p>Recebi todas as suas informações e em breve entrarei em contato para conversarmos melhor sobre seus objetivos e montarmos juntos o melhor plano de treino para você.</p>
+                <p>Fique tranquilo, logo mais retorno!</p>
+            </div>
+            
+            <div class="plan-info">
+                <h3>Valores para quem divide horários! ⚠️</h3>
+                
+                <div class="plan-type shared">
+                    <ul class="price-list">
+                        <li><strong>2x por semana:</strong> R$ 230,00</li>
+                        <li><strong>3x por semana:</strong> R$ 330,00</li>
+                        <li><strong>4x por semana:</strong> R$ 430,00</li>
+                        <li><strong>5x por semana:</strong> R$ 530,00</li>
+                    </ul>
+                </div>
+                
+                <p class="plan-note">Esses valores são individuais.</p>
+                
+                <div class="extra-info">
+                    <p><strong>Valor da hora aula avulsa: R$ 45,00</strong></p>
+                </div>
+            </div>
+            
+            <div class="trial-section">
+                <h3>Enquanto isso, que tal falar comigo?</h3>
+                <p>Se tiver alguma dúvida ou quiser adiantar nossa conversa, me chame no WhatsApp!</p>
+                
+                <a href="https://wa.me/554497460157?text=Olá!%20Acabei%20de%20preencher%20a%20simulação%20de%20treinos.%20Gostaria%20de%20conversar!" class="whatsapp-button primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Falar no WhatsApp</span>
+                </a>
+            </div>
+            
+            <a href="index.html" class="back-link">
+                <i class="fas fa-home"></i> Voltar ao Início
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Transição suave entre os vídeos de fundo
+        const video1 = document.querySelector('.video-1');
+        const video2 = document.querySelector('.video-2');
+        let currentVideo = 1;
+        
+        setInterval(() => {
+            if (currentVideo === 1) {
+                video2.classList.add('active');
+                setTimeout(() => {
+                    video1.classList.remove('active');
+                }, 800);
+                currentVideo = 2;
+            } else {
+                video1.classList.add('active');
+                setTimeout(() => {
+                    video2.classList.remove('active');
+                }, 800);
+                currentVideo = 1;
+            }
+        }, 6000);
+    </script>
+</body>
+</html>

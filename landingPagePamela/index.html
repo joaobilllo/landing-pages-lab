@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pamela Franco - Educadora Física</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=5">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Carregando...</p>
+    </div>
+    
+    <!-- Vídeo de fundo -->
+    <video autoplay muted loop playsinline class="background-video video-1 active">
+        <source src="videocompleto.mp4" type="video/mp4">
+    </video>
+    
+    <div class="container">
+        <div class="content-card">
+            <!-- Logo -->
+            <div class="logo-container">
+                <img src="imagemdeperfil.jpeg" alt="Pamela Franco - Educadora Física" class="logo">
+            </div>
+            
+            <!-- Nome da empresa -->
+            <h1 class="company-name">Pamela Franco</h1>
+            <p class="company-tagline">Seu treino, seu ritmo, seus resultados</p>
+            
+            <!-- Botões CTA -->
+            <div class="cta-section">
+                <a href="aplicativo.html" class="cta-button app-button">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Conheça meu App</span>
+                </a>
+                
+                <a href="consultoria-online.html" class="cta-button consultoria-button">
+                    <i class="fas fa-laptop-medical"></i>
+                    <span>Consultoria Online</span>
+                </a>
+                
+                <a href="https://wa.me/5544997102688?text=Olá,%20Pamela!%20Gostaria%20de%20receber%20informações%20sobre%20os%20planos%20de%20personal%20disponíveis" class="cta-button whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Fale Comigo</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Esconde loading screen quando tudo estiver carregado
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 500);
+        });
+        
+        // Fallback: garante que loading desapareça após 0.5 segundo
+        setTimeout(() => {
+            document.getElementById('loadingScreen').classList.add('hidden');
+        }, 500);
+        
+        // Adiciona animação suave ao carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            const card = document.querySelector('.content-card');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+                card.style.background = 'transparent';
+                card.style.backdropFilter = 'none';
+                card.style.webkitBackdropFilter = 'none';
+                card.style.border = '2px solid rgba(255, 255, 255, 0.8)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
