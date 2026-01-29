@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "landingPageCorporius/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "landingPageMarias/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "landingPagePamela/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "landingPageRafael/**",
+      "use": "@vercel/static"
+    }
+  ]
+}
