@@ -43,18 +43,6 @@
                 <p>Vamos juntos nessa jornada!</p>
             </div>
             
-            <div class="trial-section">
-                <h3>Enquanto isso, vamos conversar?</h3>
-                <p>Se quiser adiantar nossa conversa ou tirar alguma dúvida, me chame no WhatsApp!</p>
-                
-                <div class="cta-section">
-                    <a href="https://wa.me/5544997102688?text=Olá%20Pamela!%20Acabei%20de%20me%20cadastrar%20no%20aplicativo%20e%20quero%20saber%20mais!" class="whatsapp-button primary" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>Falar no WhatsApp</span>
-                    </a>
-                </div>
-            </div>
-            
             <a href="index.html" class="back-link">
                 <i class="fas fa-home"></i> Voltar ao Início
             </a>
@@ -84,29 +72,6 @@
                 card.style.transform = 'translateY(0)';
             }, 100);
         });
-        
-        // Transição suave entre os 6 vídeos de fundo
-        const videos = [
-            document.querySelector('.video-1'),
-            document.querySelector('.video-2'),
-            document.querySelector('.video-3'),
-            document.querySelector('.video-4'),
-            document.querySelector('.video-5'),
-            document.querySelector('.video-6')
-        ];
-        
-        let currentVideoIndex = 0;
-        
-        setInterval(() => {
-            // Remove active do vídeo atual
-            videos[currentVideoIndex].classList.remove('active');
-            
-            // Avança para o próximo vídeo
-            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
-            
-            // Adiciona active ao próximo vídeo
-            videos[currentVideoIndex].classList.add('active');
-        }, 6000); // Troca a cada 6 segundos
     </script>
 </body>
 </html>

@@ -31,7 +31,7 @@
             </div>
             
             <h1 class="form-title">Faça Parte do Meu Time</h1>
-            <p class="form-subtitle">Preencha seus dados para começarmos sua jornada de transformação!</p>
+            <p class="form-subtitle">Preencha seus dados para que eu possa entrar em contato e te registrar no aplicativo. Vamos iniciar sua jornada de transformação! 🤍</p>
             
             <form id="appForm" class="training-form">
                 <!-- Nome -->
@@ -67,6 +67,18 @@
                     <i class="fas fa-arrow-left"></i> Voltar
                 </a>
             </form>
+            
+            <!-- Formulário oculto para envio de email -->
+            <form id="hiddenEmailForm" action="https://formsubmit.co/pamela__franco_@hotmail.com" method="POST" style="display:none;">
+                <input type="hidden" name="_subject" value="🎯 Novo Cadastro - Aplicativo Pamela Franco">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://pamelafrancopersonal.vercel.app/confirmacao-app.html">
+                <input type="text" name="Nome" id="hiddenName">
+                <input type="email" name="E-mail" id="hiddenEmail">
+                <input type="text" name="Telefone" id="hiddenPhone">
+                <input type="text" name="Data de Nascimento" id="hiddenBirthdate">
+            </form>
         </div>
     </div>
     
@@ -93,29 +105,6 @@
                 card.style.transform = 'translateY(0)';
             }, 100);
         });
-        
-        // Transição suave entre os 6 vídeos de fundo
-        const videos = [
-            document.querySelector('.video-1'),
-            document.querySelector('.video-2'),
-            document.querySelector('.video-3'),
-            document.querySelector('.video-4'),
-            document.querySelector('.video-5'),
-            document.querySelector('.video-6')
-        ];
-        
-        let currentVideoIndex = 0;
-        
-        setInterval(() => {
-            // Remove active do vídeo atual
-            videos[currentVideoIndex].classList.remove('active');
-            
-            // Avança para o próximo vídeo
-            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
-            
-            // Adiciona active ao próximo vídeo
-            videos[currentVideoIndex].classList.add('active');
-        }, 6000); // Troca a cada 6 segundos
         
         // Máscara de telefone
         document.getElementById('phone').addEventListener('input', function(e) {
@@ -152,41 +141,28 @@
             const birthDate = new Date(formData.birthdate + 'T00:00:00');
             const formattedDate = birthDate.toLocaleDateString('pt-BR');
             
-            // Monta mensagem para WhatsApp
-            const whatsappMessage = `*Novo Cadastro - Aplicativo!*%0A%0A` +
-                `*Nome:* ${formData.name}%0A` +
-                `*E-mail:* ${formData.email}%0A` +
-                `*Telefone:* ${formData.phone}%0A` +
-                `*Data de Nascimento:* ${formattedDate}`;
+            // Monta mensagem conversacional para WhatsApp
+            const whatsappMessage = `Olá%20Pamela!%20%F0%9F%A4%8D%0A%0A` +
+                `Quero%20fazer%20parte%20do%20time%20e%20treinar%20pelo%20seu%20aplicativo!%0A%0A` +
+                `Aqui%20estão%20meus%20dados%20para%20o%20cadastro:%0A%0A` +
+                `*Nome:*%20${encodeURIComponent(formData.name)}%0A` +
+                `*E-mail:*%20${encodeURIComponent(formData.email)}%0A` +
+                `*Telefone:*%20${encodeURIComponent(formData.phone)}%0A` +
+                `*Data%20de%20Nascimento:*%20${formattedDate}%0A%0A` +
+                `Podemos%20conversar%20sobre%20o%20próximo%20passo?%20%F0%9F%92%AA`;
             
-            // Prepara dados do e-mail
-            const formData2 = new FormData();
-            formData2.append('_subject', 'Novo Cadastro - Aplicativo Pamela Franco');
-            formData2.append('_template', 'table');
-            formData2.append('_captcha', 'false');
-            formData2.append('Nome', formData.name);
-            formData2.append('E-mail', formData.email);
-            formData2.append('Telefone', formData.phone);
-            formData2.append('Data de Nascimento', formattedDate);
+            // Preenche formulário oculto para envio de email
+            document.getElementById('hiddenName').value = formData.name;
+            document.getElementById('hiddenEmail').value = formData.email;
+            document.getElementById('hiddenPhone').value = formData.phone;
+            document.getElementById('hiddenBirthdate').value = formattedDate;
             
-            // Abre WhatsApp PRIMEIRO
-            const whatsappURL = `https://wa.me/5544997102688?text=${whatsappMessage}`;
+            // Abre WhatsApp em nova aba
+            const whatsappURL = `https://wa.me/5544992267665?text=${whatsappMessage}`;
             window.open(whatsappURL, '_blank');
             
-            // Envia e-mail via FormSubmit
-            fetch('https://formsubmit.co/rafael_cbillo@outlook.com', {
-                method: 'POST',
-                body: formData2,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(() => {
-                // Redireciona para página de confirmação
-                window.location.href = 'confirmacao-app.html';
-            }).catch(() => {
-                // Mesmo se der erro, redireciona
-                window.location.href = 'confirmacao-app.html';
-            });
+            // Envia o formulário oculto para o email
+            document.getElementById('hiddenEmailForm').submit();
         });
     </script>
 </body>
