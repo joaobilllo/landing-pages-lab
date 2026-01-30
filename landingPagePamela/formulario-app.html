@@ -67,17 +67,6 @@
                     <i class="fas fa-arrow-left"></i> Voltar
                 </a>
             </form>
-            
-            <!-- Formulário oculto para envio de email -->
-            <form id="hiddenEmailForm" action="https://formsubmit.co/pamela__franco_@hotmail.com" method="POST" style="display:none;" target="_blank">
-                <input type="hidden" name="_subject" value="🎯 Novo Cadastro - Aplicativo Pamela Franco">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <input type="text" name="Nome" id="hiddenName">
-                <input type="email" name="E-mail" id="hiddenEmail">
-                <input type="text" name="Telefone" id="hiddenPhone">
-                <input type="text" name="Data de Nascimento" id="hiddenBirthdate">
-            </form>
         </div>
     </div>
     
@@ -150,23 +139,31 @@
                 `*Data%20de%20Nascimento:*%20${formattedDate}%0A%0A` +
                 `Podemos%20conversar%20sobre%20o%20próximo%20passo?%20%F0%9F%92%AA`;
             
-            // Preenche formulário oculto para envio de email
-            document.getElementById('hiddenName').value = formData.name;
-            document.getElementById('hiddenEmail').value = formData.email;
-            document.getElementById('hiddenPhone').value = formData.phone;
-            document.getElementById('hiddenBirthdate').value = formattedDate;
-            
             // Abre WhatsApp em nova aba
             const whatsappURL = `https://wa.me/5544999267665?text=${whatsappMessage}`;
             window.open(whatsappURL, '_blank');
             
-            // Envia o formulário oculto para o email em uma nova aba
-            document.getElementById('hiddenEmailForm').submit();
+            // Envia email via FormSubmit usando fetch
+            const emailData = new FormData();
+            emailData.append('_subject', '🎯 Novo Cadastro - Aplicativo Pamela Franco');
+            emailData.append('_captcha', 'false');
+            emailData.append('_template', 'table');
+            emailData.append('Nome', formData.name);
+            emailData.append('E-mail', formData.email);
+            emailData.append('Telefone', formData.phone);
+            emailData.append('Data de Nascimento', formattedDate);
             
-            // Redireciona para a página de confirmação após um breve delay
+            // Envia o email em background
+            fetch('https://formsubmit.co/pamela__franco_@hotmail.com', {
+                method: 'POST',
+                body: emailData,
+                mode: 'no-cors'
+            });
+            
+            // Redireciona imediatamente para a página de confirmação
             setTimeout(() => {
                 window.location.href = 'confirmacao-app.html';
-            }, 500);
+            }, 300);
         });
     </script>
 </body>
