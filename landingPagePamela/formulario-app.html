@@ -69,11 +69,10 @@
             </form>
             
             <!-- Formulário oculto para envio de email -->
-            <form id="hiddenEmailForm" action="https://formsubmit.co/pamela__franco_@hotmail.com" method="POST" style="display:none;">
+            <form id="hiddenEmailForm" action="https://formsubmit.co/pamela__franco_@hotmail.com" method="POST" style="display:none;" target="_blank">
                 <input type="hidden" name="_subject" value="🎯 Novo Cadastro - Aplicativo Pamela Franco">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" value="https://pamelafrancopersonal.vercel.app/confirmacao-app.html">
                 <input type="text" name="Nome" id="hiddenName">
                 <input type="email" name="E-mail" id="hiddenEmail">
                 <input type="text" name="Telefone" id="hiddenPhone">
@@ -161,8 +160,13 @@
             const whatsappURL = `https://wa.me/5544999267665?text=${whatsappMessage}`;
             window.open(whatsappURL, '_blank');
             
-            // Envia o formulário oculto para o email
+            // Envia o formulário oculto para o email em uma nova aba
             document.getElementById('hiddenEmailForm').submit();
+            
+            // Redireciona para a página de confirmação após um breve delay
+            setTimeout(() => {
+                window.location.href = 'confirmacao-app.html';
+            }, 500);
         });
     </script>
 </body>
